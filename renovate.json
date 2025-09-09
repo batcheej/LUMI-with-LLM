@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base"],
+  "baseBranches": ["next"],
+  "labels": ["[type] chore", "dependencies"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "every weekday"
+  },
+  "prConcurrentLimit": 1,
+  "prHourlyLimit": 50,
+  "semanticCommits": true,
+  "semanticCommitType": "chore"
+}

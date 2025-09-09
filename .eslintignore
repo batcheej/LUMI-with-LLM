@@ -1,0 +1,7 @@
+// .eslintignore
+build/*
+dist/*
+public/*
+**/out/*
+**/node_modules/*
+commitlint.config.js
