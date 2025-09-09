@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Service for interacting with Ollama LLM API to provide AI assistance
+ * in H5P content creation. This service handles communication with a locally running
+ * Ollama instance and provides methods for getting content suggestions and streaming
+ * responses.
+ */
+
 import axios from 'axios';
 
+/**
+ * Parameters for making requests to the Ollama API
+ * @interface OllamaRequestParams
+ */
 export interface OllamaRequestParams {
     model: string;
     prompt: string;
@@ -25,11 +36,20 @@ export interface StreamCallback {
     onError?: (error: Error) => void;
 }
 
+/**
+ * Service class for interacting with Ollama LLM
+ * @class OllamaService
+ */
 export class OllamaService {
     private baseUrl: string;
     private model: string;
     private abortController: AbortController | null;
 
+    /**
+     * Creates an instance of OllamaService
+     * @param {string} baseUrl - Base URL of the Ollama API server
+     * @param {string} model - Name of the model to use (e.g., 'llama2')
+     */
     constructor(baseUrl: string = 'http://localhost:11434', model: string = 'llama2') {
         this.baseUrl = baseUrl;
         this.model = model;
@@ -126,6 +146,12 @@ export class OllamaService {
         }
     }
 
+    /**
+     * Gets specific prompt guidance based on H5P content type
+     * @private
+     * @param {string} contentType - The H5P content type (e.g., 'H5P.InteractiveVideo')
+     * @returns {string} Specific guidance for the content type
+     */
     private getContentTypePrompt(contentType: string): string {
         const contentTypePrompts: Record<string, string> = {
             'H5P.InteractiveVideo': 'Consider: timestamps for interactions, types of questions to ask at each point, visual cues, and branching scenarios.',

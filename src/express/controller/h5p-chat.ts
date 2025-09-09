@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Express controller for handling H5P content creation chat endpoints.
+ * Provides routes for getting AI-powered suggestions for H5P content creation.
+ */
+
 import * as Express from 'express';
 import { OllamaService } from '../../implementations/OllamaService';
 import { Readable } from 'stream';

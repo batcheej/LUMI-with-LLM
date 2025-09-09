@@ -1,6 +1,15 @@
+/**
+ * @fileoverview React component for the H5P content creation chat interface.
+ * Provides a chat-like interface for users to get AI assistance while creating H5P content.
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
+/**
+ * Represents a single message in the chat interface
+ * @interface Message
+ */
 interface Message {
     role: 'user' | 'assistant';
     content: string;
